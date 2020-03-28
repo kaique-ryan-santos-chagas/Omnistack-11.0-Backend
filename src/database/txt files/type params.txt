@@ -1,0 +1,42 @@
+Tipos de parâmetros: 
+
+
+Query Params: 
+
+* Utilizado em filtros e paginação ou sempre que quisermos buscar informações no backend por meio da url com o método GET;
+
+* Exemplo : app.get('/users', (req, res) => {
+	const params = req.query;
+	return res.json(params);
+});
+
++ No Postman ou Insominia enviamos uma rota passando a url completa:
+ 
+ * 'http:localhost:3333/users?name=Kaique&idade=17';
+
+ Route params:
+
+* Parâmetros utilizados para identificar recursos utilizando o 'params' como parte da requisição ao invés de query;
+
+* Exemplo: app.get('/users/:id', (req, res) => {
+	const params = req.params;
+	return res.json(params);
+});
+
+
+Request Body: 
+
+* Utilizado para criar novas informações ou alterar uma informação ja existente
+
+* Exemplo: app.use(express.json());
+
+app.post('/users', (req, res) => {
+	const params = req.body;
+	return res.json(params);
+
+});
+
++ No postman ou insominia é necessário enviar os dados da requisição em formato json.
+
+ * { "name": "Kaique", "idade": 25}
+

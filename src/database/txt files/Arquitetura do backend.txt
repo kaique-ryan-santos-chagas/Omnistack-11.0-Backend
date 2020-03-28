@@ -1,0 +1,15 @@
+- Banco de Dados: SQLite 3 
+
+Entidades do DB: 
+
+* ONG;
+* Caso (ONG);
+
+- Funcionalidades do backend
+
+* Cadastro de ONG (web);
+* Login ONG (web);
+* Logout ONG (web);
+* Cadastrar caso (web);
+* Deletar caso (web);
+* Listar casos específicos de uma ONG (web);
