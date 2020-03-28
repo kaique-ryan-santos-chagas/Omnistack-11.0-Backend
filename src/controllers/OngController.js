@@ -1,0 +1,20 @@
+const express = require('express');
+const crypto = require('crypto');
+const connection = require('./database/connection');
+
+module.exports = {
+    create async (req, res) => {
+		const { name, email, whatsapp, city, uf} = req.body;
+		const id = crypto.randomBytes(4).toString('HEX');
+		await connection.insert({
+			id,
+			name,
+			email,
+			whatsapp,
+			city,
+			uf
+		});
+	}
+
+
+}
