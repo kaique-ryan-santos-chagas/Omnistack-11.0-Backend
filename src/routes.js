@@ -1,13 +1,7 @@
 const express = require('express');
-const connection = require('./database/connection');
-const crypto = require('crypto');
 const routes = express.Router();
+const OngController = require('./controllers/OngController.js');
 
-routes.post('/ongs', (req, res) => {
-	const {name, email, whatsapp, city, uf} = req.body;
-	
-    return res.json(data);
-});
-
+routes.post('/ongs', OngController.create);
 
 module.exports = routes;
