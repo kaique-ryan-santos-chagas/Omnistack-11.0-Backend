@@ -22,12 +22,23 @@ module.exports = {
 		return res.json({ id });
 	},
 
-	// Revisar o código (não está funcionando)
 	delete: async (req, res) => {
-		const idOng = req.body;
-		const ongDel = await connection('ongs').where('id', idOng).del();
-		return res.send('Account deleted');
+		const { ongName } = req.params;
+		const ong_id = req.headers.authorization;
+		const ong = await connection('ongs').where('name', ongName).select('id').first();
+		if(ong.id != ong_id){
+			return res.status(401).json({error: 'Operation is not permitted'});
+		}
+
+		await connection('ongs').where('id', ong_id).delete();
+		return res.status(204).send();
 		
+	},
+
+	searchOng: async (req, res) => {
+		const nameOng = req.headers.name;
+		const search = await connection('ongs').where('name', nameOng).select('*');
+		return res.json(search);
 	}
 
 };
